@@ -125,11 +125,11 @@ while True:
 	print("Unique File")
 	if len(label_details) >= 5:
 		if label_details.count("Mask") == 5:
-			play_audio('mask.mp3')
+			#play_audio('mask.mp3')
 			label_details = ["Mask"]
 			print("Mask Cell ma gaya ha")
 		elif label_details.count("No Mask") == 5:
-			play_audio('no_mask.mp3')
+			#play_audio('no_mask.mp3')
 			label_details = ["No Mask"]
 			print("No Mask waly cell ma gaya ha")
 		else:
