@@ -8,8 +8,8 @@ ECHO = 24
 
 print("Distance measurment in progress")
 
-GPIO.setup(TRIG.GPIO.OUT)
-GPIO.setup(ECHO.GPIO.IN)
+GPIO.setup(TRIG,GPIO.OUT)
+GPIO.setup(ECHO,GPIO.IN)
 
 try:
     while True:
