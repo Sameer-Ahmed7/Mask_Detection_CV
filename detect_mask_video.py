@@ -58,15 +58,19 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 			# ordering, resize it to 224x224, and preprocess it
 			face = frame[startY:endY, startX:endX]
 			face = cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
-			face = cv2.resize(face, (224, 224))
-			face = img_to_array(face)
-			face = preprocess_input(face)
-			face = np.expand_dims(face, axis=0)
+			try:
+				face = cv2.resize(face, (224, 224))
+				face = img_to_array(face)
+				face = preprocess_input(face)
+				face = np.expand_dims(face, axis=0)
 
-			# add the face and bounding boxes to their respective
-			# lists
-			faces.append(face)
-			locs.append((startX, startY, endX, endY))
+				# add the face and bounding boxes to their respective
+				# lists
+				faces.append(face)
+				locs.append((startX, startY, endX, endY))
+
+			except:
+				pass
 
 	# only make a predictions if at least one face was detected
 	if len(faces) > 0:
@@ -122,16 +126,18 @@ while True:
 	# face mask or not
 	(locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
 
-	print("Unique File")
+	#print("Unique File")
 	if len(label_details) >= 5:
 		if label_details.count("Mask") == 5:
-			play_audio('mask.mp3')
+			#play_audio('mask.mp3')
 			label_details = ["Mask"]
-			print("Mask Cell ma gaya ha")
+			#print("Mask Cell ma gaya ha")
+			#print("\n Detect Mask \n")
 		elif label_details.count("No Mask") == 5:
-			play_audio('no_mask.mp3')
+			#play_audio('no_mask.mp3')
 			label_details = ["No Mask"]
-			print("No Mask waly cell ma gaya ha")
+			#print("No Mask waly cell ma gaya ha")
+			#print("\n Detect No Mask \n")
 		else:
 			pass
 
@@ -148,17 +154,19 @@ while True:
 		if mask > withoutMask:
 			label = "Mask"
 			label_details.append(label)
-			print(label_details)
+			print("\n ***** Detect Mask ***** \n")
+			#print(label_details)
 
 
 		else:
 			label = "No Mask"
 			label_details.append(label)
-			print(label_details)
+			print("\n ***** Detect No Mask ***** \n")
+			#print(label_details)
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
-		print(label_details)
-		print(len(label_details))
+		#print(label_details)
+		#print(len(label_details))
 
 
 		# include the probability in the label
@@ -177,6 +185,8 @@ while True:
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
+
+
 
 # do a bit of cleanup
 cv2.destroyAllWindows()
