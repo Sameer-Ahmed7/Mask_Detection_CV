@@ -13,6 +13,12 @@ import time
 import cv2
 import os
 from playsound import playsound
+import RPi.GPIO as GPIO #Led blink
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+
 
 
 label_details = ["Mask"]
@@ -155,6 +161,9 @@ while True:
 			label = "Mask"
 			label_details.append(label)
 			print("\n ***** Detect Mask ***** \n")
+			# Led Declear
+			GPIO.output(17, True)
+			GPIO.output(18, False)
 			#print(label_details)
 
 
@@ -162,6 +171,11 @@ while True:
 			label = "No Mask"
 			label_details.append(label)
 			print("\n ***** Detect No Mask ***** \n")
+
+			# Led Declear
+			GPIO.output(17, False)
+			GPIO.output(18, True)
+
 			#print(label_details)
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
