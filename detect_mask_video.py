@@ -22,9 +22,14 @@ ser.baudrate=9600
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.OUT)
-GPIO.setup(18, GPIO.OUT)
 
+#Led's
+GPIO.setup(17, GPIO.OUT)#Green
+GPIO.setup(18, GPIO.OUT)#Red
+
+#Buzzur
+GPIO.setup(22, GPIO.OUT)#Mask Indicate
+GPIO.setup(23, GPIO.OUT)#Temperature Indicate
 
 
 label_details = ["Mask"]
@@ -185,11 +190,21 @@ while True:
 			GPIO.output(18, False)
 			#print(label_details)
 			
+			#Buzzur
+			GPIO.output(22, False) #Mask Detect
+			
 			#Arduino To respberry pi conncection
 			if(read_ser=="Temperature Excide"):
 				print("Temeperature > 40")
+				
+				#Buzzur
+				GPIO.output(23, True)#Temperature Excide
+				
 			else:
 				print("Temeperature < 40")
+				
+				#Buzzur
+				GPIO.output(23, False)#Temperature Normal
 				
 
 
@@ -202,6 +217,9 @@ while True:
 			GPIO.output(17, False)
 			GPIO.output(18, True)
 
+			#Buzzur
+			GPIO.output(22, True)#Mask Not detect
+				
 			#print(label_details)
 			
 			#Arduino To respberry pi conncection
