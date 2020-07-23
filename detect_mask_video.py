@@ -12,8 +12,14 @@ import imutils
 import time
 import cv2
 import os
+import serial # Serial port initialize 
 from playsound import playsound
 import RPi.GPIO as GPIO #Led blink
+
+#Arduino to Respberry pi connection
+ser=serial.Serial("/dev/ttyACM0",9600)  #change ACM number as found from ls /dev/tty/ACM*
+ser.baudrate=9600
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.OUT)
@@ -132,6 +138,10 @@ while True:
 	# detect faces in the frame and determine if they are wearing a
 	# face mask or not
 	(locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
+	
+	
+	
+	
 
 	#print("Unique File")
 	if len(label_details) >= 5:
@@ -150,6 +160,14 @@ while True:
 
 	# loop over the detected face locations and their corresponding
 	# locations
+	
+	
+	#Arduino To respberry pi conncection
+	read_ser=ser.readline()
+	print(read_ser)
+	
+	
+	
 	for (box, pred) in zip(locs, preds):
 		# unpack the bounding box and predictions
 		(startX, startY, endX, endY) = box
@@ -166,6 +184,13 @@ while True:
 			GPIO.output(17, True)
 			GPIO.output(18, False)
 			#print(label_details)
+			
+			#Arduino To respberry pi conncection
+			if(read_ser=="Temperature Excide"):
+				print("Temeperature > 40")
+			else:
+				print("Temeperature < 40")
+				
 
 
 		else:
@@ -178,6 +203,15 @@ while True:
 			GPIO.output(18, True)
 
 			#print(label_details)
+			
+			#Arduino To respberry pi conncection
+			if(read_ser=="Temperature Excide"):
+				print("Temeperature > 40")
+			else:
+				print("Temeperature < 40")
+			
+			
+			
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
 		#print(label_details)
