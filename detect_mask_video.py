@@ -196,13 +196,13 @@ while True:
 			#Arduino To respberry pi conncection
 			if(read_ser=="Temperature Excide"):
 				print("Temeperature > 40")
-				
+				print(1)
 				#Buzzur
 				GPIO.output(23, True)#Temperature Excide
 				
 			else:
 				print("Temeperature < 40")
-				
+				print(2)
 				#Buzzur
 				GPIO.output(23, False)#Temperature Normal
 				
@@ -225,8 +225,10 @@ while True:
 			#Arduino To respberry pi conncection
 			if(read_ser=="Temperature Excide"):
 				print("Temeperature > 40")
+				print(3)
 			else:
 				print("Temeperature < 40")
+				print(4)
 			
 			
 			
