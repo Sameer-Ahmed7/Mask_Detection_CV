@@ -166,10 +166,15 @@ while True:
 	# loop over the detected face locations and their corresponding
 	# locations
 	
-	
+	"""
 	#Arduino To respberry pi conncection
 	read_ser=ser.readline()
-	print(read_ser)
+	print(read_ser)"""
+	
+	## Code edit for arduino Wired communication
+	read_ser=ser.readline()
+	command = read_ser.decode('ASCII')#Convert byte to string
+	print(command)
 	
 	
 	
@@ -194,15 +199,15 @@ while True:
 			GPIO.output(22, False) #Mask Detect
 			
 			#Arduino To respberry pi conncection
-			if(read_ser=="Temperature Excide"):
+			if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
 				print("Temeperature > 40")
-				print(1)
+				#print(1)
 				#Buzzur
 				GPIO.output(23, True)#Temperature Excide
 				
 			else:
 				print("Temeperature < 40")
-				print(2)
+				#print(2)
 				#Buzzur
 				GPIO.output(23, False)#Temperature Normal
 				
@@ -223,12 +228,16 @@ while True:
 			#print(label_details)
 			
 			#Arduino To respberry pi conncection
-			if(read_ser=="Temperature Excide"):
+			if(command.strip()=="Temperature Excide"):
 				print("Temeperature > 40")
-				print(3)
+				#print(3)
+				#Buzzur
+				GPIO.output(23, True)#Temperature Excide
 			else:
 				print("Temeperature < 40")
-				print(4)
+				#print(4)
+				#Buzzur
+				GPIO.output(23, False)#Temperature Normal
 			
 			
 			
