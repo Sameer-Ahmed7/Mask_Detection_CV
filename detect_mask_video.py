@@ -174,7 +174,22 @@ while True:
 	## Code edit for arduino Wired communication
 	read_ser=ser.readline()
 	command = read_ser.decode('ASCII')#Convert byte to string
-	print(command)
+	#print(command)
+	
+	#Arduino To respberry pi conncection
+	if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
+		print(command)
+		print("Temeperature > 40")
+		#print(1)
+		#Buzzur
+		GPIO.output(23, True)#Temperature Excide
+				
+	else:
+		print(command)
+		print("Temeperature < 40")
+		#print(2)
+		#Buzzur
+		GPIO.output(23, False)#Temperature Normal
 	
 	
 	
@@ -236,7 +251,7 @@ while True:
 				#Buzzur
 				GPIO.output(23, False)#Temperature Normal"""
 				
-				
+		"""		
 		#Arduino To respberry pi conncection
 		if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
 			print("Temeperature > 40")
@@ -248,7 +263,7 @@ while True:
 			print("Temeperature < 40")
 			#print(2)
 			#Buzzur
-			GPIO.output(23, False)#Temperature Normal"""
+			GPIO.output(23, False)#Temperature Normal """
 			
 			
 			
