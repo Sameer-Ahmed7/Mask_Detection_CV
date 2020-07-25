@@ -181,8 +181,27 @@ while True:
 		print(command)
 		print("Temeperature > 40")
 		#print(1)
-		#Buzzur
+		#Buzzur beep beep
 		GPIO.output(23, True)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, False)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, True)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, False)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, True)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, False)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, True)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, False)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, True)#Temperature Excide
+		time.sleep(.1)
+		GPIO.output(23, False)#Temperature Excide
+		time.sleep(.1)
 				
 	else:
 		print(command)
@@ -235,7 +254,31 @@ while True:
 			GPIO.output(18, True)
 
 			#Buzzur
-			GPIO.output(22, True)#Mask Not detect
+			#GPIO.output(22, True)#Mask Not detect
+			
+			#Buzzur beep beep Mask Not detect
+			
+			GPIO.output(22, True)
+			time.sleep(.1)
+			GPIO.output(22, False)
+			time.sleep(.1)
+			GPIO.output(22, True)
+			time.sleep(.1)
+			GPIO.output(22, False)
+			time.sleep(.1)
+			GPIO.output(22, True)
+			time.sleep(.1)
+			GPIO.output(22, False)
+			time.sleep(.1)
+			GPIO.output(22, True)
+			time.sleep(.1)
+			GPIO.output(22, False)
+			time.sleep(.1)
+			GPIO.output(22, True)
+			time.sleep(.1)
+			GPIO.output(22, False)
+			time.sleep(.1)
+
 				
 			#print(label_details)
 			"""
