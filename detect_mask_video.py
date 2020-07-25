@@ -176,40 +176,46 @@ while True:
 	command = read_ser.decode('ASCII')#Convert byte to string
 	#print(command)
 	
-	#Arduino To respberry pi conncection
-	if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
-		print(command)
-		print("Temeperature > 40")
-		#print(1)
-		#Buzzur beep beep
-		GPIO.output(23, True)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, False)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, True)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, False)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, True)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, False)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, True)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, False)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, True)#Temperature Excide
-		time.sleep(.1)
-		GPIO.output(23, False)#Temperature Excide
-		time.sleep(.1)
-				
-	else:
-		print(command)
-		print("Temeperature < 40")
-		#print(2)
-		#Buzzur
-		GPIO.output(23, False)#Temperature Normal
 	
+	#Ultrasonic Sensor Connection
+	if (command.strip()=="Come Closer"):
+		print("Your Distance is >20 cm \n Please Come Closer")
+	
+	else:
+		#Arduino To respberry pi conncection
+		if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
+			print(command)
+			print("Temeperature > 40")
+			#print(1)
+			#Buzzur beep beep
+			GPIO.output(23, True)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, False)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, True)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, False)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, True)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, False)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, True)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, False)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, True)#Temperature Excide
+			time.sleep(.1)
+			GPIO.output(23, False)#Temperature Excide
+			time.sleep(.1)
+
+		else:
+			print(command)
+			print("Temeperature < 40")
+			#print(2)
+			#Buzzur
+			GPIO.output(23, False)#Temperature Normal
+
 	
 	
 	for (box, pred) in zip(locs, preds):
