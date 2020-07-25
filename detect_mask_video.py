@@ -197,7 +197,7 @@ while True:
 			
 			#Buzzur
 			GPIO.output(22, False) #Mask Detect
-			
+			"""
 			#Arduino To respberry pi conncection
 			if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
 				print("Temeperature > 40")
@@ -209,10 +209,7 @@ while True:
 				print("Temeperature < 40")
 				#print(2)
 				#Buzzur
-				GPIO.output(23, False)#Temperature Normal
-				
-
-
+				GPIO.output(23, False)#Temperature Normal"""
 		else:
 			label = "No Mask"
 			label_details.append(label)
@@ -226,7 +223,7 @@ while True:
 			GPIO.output(22, True)#Mask Not detect
 				
 			#print(label_details)
-			
+			"""
 			#Arduino To respberry pi conncection
 			if(command.strip()=="Temperature Excide"):
 				print("Temeperature > 40")
@@ -237,7 +234,21 @@ while True:
 				print("Temeperature < 40")
 				#print(4)
 				#Buzzur
-				GPIO.output(23, False)#Temperature Normal
+				GPIO.output(23, False)#Temperature Normal"""
+				
+				
+		#Arduino To respberry pi conncection
+		if(command.strip()=="Temperature Excide"):  # strip method to remove termination character
+			print("Temeperature > 40")
+			#print(1)
+			#Buzzur
+			GPIO.output(23, True)#Temperature Excide
+				
+		else:
+			print("Temeperature < 40")
+			#print(2)
+			#Buzzur
+			GPIO.output(23, False)#Temperature Normal"""
 			
 			
 			
