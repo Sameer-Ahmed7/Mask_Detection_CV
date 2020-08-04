@@ -127,7 +127,7 @@ faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 print("[INFO] loading face mask detector model...")
 
 # Changes
-prin("Args..")
+print("Args..")
 print(args)
 print("Args Model.. ")
 print(args["model"])
