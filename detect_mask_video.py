@@ -17,7 +17,10 @@ from playsound import playsound
 import RPi.GPIO as GPIO #Led blink
 
 #Arduino to Respberry pi connection
-ser=serial.Serial("/dev/ttyACM0",9600)  #change ACM number as found from ls /dev/tty/ACM*
+#ser=serial.Serial("/dev/ttyACM0",9600)  #change ACM number as found from ls /dev/tty/ACM*
+
+#ACMO to USBO
+ser=serial.Serial("/dev/ttyUSB0",9600)  #change USB number as found from ls /dev/tty/USB*
 ser.baudrate=9600
 
 
