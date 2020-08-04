@@ -125,7 +125,15 @@ faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
 print("[INFO] loading face mask detector model...")
-maskNet = load_model(args["model"])
+
+# Changes
+prin("Args..")
+print(args)
+print("Args Model.. ")
+print(args["model"])
+#maskNet = load_model(args["model"])
+maskNet = load_model("mask_detector.model")
+#Changes Closed
 
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
